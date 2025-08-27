@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-service-configmap
+data:
+  MYSQL_HOST: host.minicube.internal
+  MYSQL_PORT: "3306"
+  MYSQL_USER: test_auth_user
+  MYSQL_DB: auth_service_db
