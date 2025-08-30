@@ -1,0 +1,12 @@
+apiVersion : v1
+kind: ConfigMap
+metadata:
+  name: converter-configmap
+data:
+  MONGODB_HOST:  "host.minikube.internal"
+  MONGODB_PORT: 27017
+  MONGODB_MP3_DB: "mp3s"
+  MONGODB_VIDEO_DB: "videos"
+  auth_service_url: str = "http://auth-service:8000"
+  rabbitmq_url: str = "amqp://guest:guest@rabbitmq:5672/"
+

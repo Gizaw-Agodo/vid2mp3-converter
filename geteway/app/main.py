@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, Depends
 from app.core.database import connect_to_mongo, close_mongo_connection
 from contextlib import asynccontextmanager
 from app.services.auth_service import login_user
-from app.services.storage_service import save_video
+from app.services.storage_service import save_video, download_audio
 from app.schemas.auth_schema import LoginRequest
 from app.core.dependencies import verify_token
 from app.services.mq_service import send_video_message
@@ -39,3 +39,7 @@ async def upload(file: UploadFile, decoded: dict[str, str] = Depends(verify_toke
     )
 
     return file_id
+
+@app.get('/download/{file_id}')
+async def download_mp3(file_id: str, decoded: dict[str, str] = Depends(verify_token)):
+    await download_audio(file_id=file_id)

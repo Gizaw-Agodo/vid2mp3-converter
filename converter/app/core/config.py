@@ -1,6 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-
 class Settings(BaseSettings):
 
     MONGODB_HOST: str = "host.minikube.internal"
@@ -15,6 +14,8 @@ class Settings(BaseSettings):
     @property
     def mongodb_url(self) -> str:
         return f"mongodb://{self.MONGODB_HOST}:{self.MONGODB_PORT}"
+     
+    model_config = SettingsConfigDict(env_file='.env', extra="ignore")
 
 
 config = Settings()
