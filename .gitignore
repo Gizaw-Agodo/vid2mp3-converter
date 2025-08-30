@@ -1,0 +1,4 @@
+/converter/converter-env
+/geteway/geteway-env
+/auth/auth-env
+**/.env
